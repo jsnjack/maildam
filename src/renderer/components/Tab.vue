@@ -21,6 +21,9 @@ export default {
         getPartition: function() {
             return "persist:" + this.initialItem.name;
         },
+        isActive: function( ) {
+            return this.initialItem.isActive;
+        },
     },
     methods: {
         newWindow(ev) {
@@ -30,6 +33,15 @@ export default {
         domReady(ev) {
             // Add context menu
             window.require("electron-context-menu")({window: ev.target});
+        },
+    },
+    watch: {
+        isActive: function(val) {
+            if (val) {
+                // Resize webview to prevent it showing halfscreen when going back from sideBySide mode
+                window.resizeBy(-1, 0);
+                window.resizeBy(1, 0);
+            }
         },
     },
 };
