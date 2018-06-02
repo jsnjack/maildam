@@ -7,7 +7,7 @@
         @activate="activate">
       </TabIcon>
     </div>
-    <div class="container">
+    <div class="container" :class="{sidebyside: sideBySide}">
       <Tab v-for="item in tabs"
         :key="item.url"
         :initialItem="item">
@@ -31,9 +31,12 @@ export default {
     },
     methods: {
         activate(id) {
+            this.sideBySide = id === this.tabs.length - 1;
             this.tabs[id].isActive = true;
             for (let i = 0; i < this.tabs.length; i++) {
-                if (this.tabs[i].id !== id) {
+                if (this.sideBySide) {
+                    this.tabs[i].isActive = true;
+                } else if (this.tabs[i].id !== id) {
                     this.tabs[i].isActive = false;
                 }
             }
@@ -42,6 +45,7 @@ export default {
     data() {
         return {
             tabs: [],
+            sideBySide: false,
         };
     },
 };
@@ -61,5 +65,8 @@ export default {
   background: #24292e;
   width: 100%;
   height: 100%;
+}
+.container.sidebyside {
+    display: flex;
 }
 </style>

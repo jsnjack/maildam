@@ -1,10 +1,9 @@
 <template>
   <webview
     :src="getSRC"
-    :class="{active: initialItem.isActive}"
+    :class="{active: initialItem.isActive, invisible: !initialItem.url}"
     :partition="getPartition"
     @new-window="newWindow"
-    @dom-ready="domReady"
     ></webview>
 </template>
 
@@ -27,10 +26,6 @@ export default {
             // Open URLs in external browser
             shell.openExternal(ev.url);
         },
-        domReady(ev) {
-            // inject styles
-            // ev.target.openDevTools();
-        },
     },
 };
 </script>
@@ -42,5 +37,9 @@ webview {
 webview.active {
   display: flex;
   height: 100%;
+  flex-grow: 1;
+}
+webview.active.invisible {
+    display: none;
 }
 </style>

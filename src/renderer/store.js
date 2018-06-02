@@ -11,6 +11,11 @@ export default function getConfigFile() {
         for (let i=0; i<config.length; i++) {
             config[i].id = i;
         }
+        config.push({
+            name: "All",
+            id: config.length,
+            isActive: false,
+        });
         return config;
     } catch (error) {
         return [];
