@@ -2,14 +2,14 @@
   <div class="main-wrapper">
     <div class="tabs">
       <TabIcon v-for="item in tabs"
-        :key="item.url"
+        :key="item.id"
         :initialItem="item"
         @activate="activate">
       </TabIcon>
     </div>
     <div class="container" :class="{sidebyside: sideBySide}">
       <Tab v-for="item in tabs"
-        :key="item.url"
+        :key="item.id"
         :initialItem="item">
       </Tab>
     </div>
