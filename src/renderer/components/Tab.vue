@@ -4,6 +4,7 @@
     :class="{active: initialItem.isActive, invisible: !initialItem.url}"
     :partition="getPartition"
     @new-window="newWindow"
+    @dom-ready="domReady"
     ></webview>
 </template>
 
@@ -25,6 +26,10 @@ export default {
         newWindow(ev) {
             // Open URLs in external browser
             shell.openExternal(ev.url);
+        },
+        domReady(ev) {
+            // Add context menu
+            window.require("electron-context-menu")({window: ev.target});
         },
     },
 };
