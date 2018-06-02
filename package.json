@@ -1,7 +1,7 @@
 {
   "name": "maildam",
   "productName": "maildam",
-  "version": "0.0.0",
+  "version": "0.2.3",
   "author": "Yauhen Shulitski <jsnjack@gmail.com>",
   "description": "Inbox as webapp",
   "license": "MIT",
