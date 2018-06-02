@@ -1,20 +1,31 @@
 <template>
   <div id="app">
-    <landing-page></landing-page>
+    <Main></Main>
   </div>
 </template>
 
 <script>
-import LandingPage from "@/components/LandingPage";
+import Main from "@/components/Main";
 
 export default {
     name: "maildam",
     components: {
-        LandingPage,
+        Main,
     },
 };
 </script>
 
 <style>
-  /* CSS */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #24292e;
+  color: white;
+  font-size: 16px;
+  height: 100%;
+}
+#app {
+  height: 100%;
+}
 </style>

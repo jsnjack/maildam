@@ -18,9 +18,9 @@ function createWindow() {
    * Initial window options
    */
     mainWindow = new BrowserWindow({
-        height: 563,
-        useContentSize: true,
         width: 1000,
+        height: 600,
+        autoHideMenuBar: true,
     });
 
     mainWindow.loadURL(winURL);
