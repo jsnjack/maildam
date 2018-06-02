@@ -8,9 +8,11 @@ function watchNotifications() {
 
     let channel = pusher.subscribe("mail");
     channel.bind("new", function(data) {
+        let audio = new Audio("static/message.oga");
+        audio.play();
         new Notification(`${data.subject}`, {
             body: `from ${data.from_name} <${data.from_email}>`,
-            silent: false,
+            silent: true,
         });
     });
 }
