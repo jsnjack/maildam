@@ -45,8 +45,8 @@ export default {
         },
         resize() {
             if (this.initialItem.url) {
-                window.resizeBy(-1, 0);
-                window.resizeBy(1, 0);
+                window.resizeBy(-10, 0);
+                window.resizeBy(10, 0);
             }
         },
     },
