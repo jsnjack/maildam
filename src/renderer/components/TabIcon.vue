@@ -23,7 +23,7 @@ export default {
 
 <style scoped>
 .tab-icon {
-    background: white;
+    background: rgb(145, 145, 145);
     color: #24292e;
     text-transform: capitalize;
     font-size: 1.5rem;
@@ -32,10 +32,13 @@ export default {
     border-radius: 50%;
     height: 3rem;
     width: 3rem;
-    margin: 1rem;
+    margin: 0.5rem;
     cursor: pointer;
+    border: solid 3px;
 }
 .active {
-    background: yellow;
+    /* border: #599af0 solid 5px; */
+    border: white solid 3px;
+    color: white;
 }
 </style>
