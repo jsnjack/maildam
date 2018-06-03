@@ -14,6 +14,15 @@ const {shell} = window.require("electron");
 export default {
     name: "Tab",
     props: ["initialItem"],
+    mounted() {
+        this.$root.$on("resize", (id) => {
+            if (id === "all") {
+                this.resize();
+            } else if (id === this.initialItem.id) {
+                this.resize();
+            }
+        });
+    },
     computed: {
         getSRC: function() {
             return this.initialItem.url;
@@ -34,11 +43,8 @@ export default {
             // Add context menu
             window.require("electron-context-menu")({window: ev.target});
         },
-    },
-    watch: {
-        isActive: function(val) {
-            if (val) {
-                // Resize webview to prevent it showing halfscreen when going back from sideBySide mode
+        resize() {
+            if (this.initialItem.url) {
                 window.resizeBy(-1, 0);
                 window.resizeBy(1, 0);
             }

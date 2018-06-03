@@ -15,6 +15,11 @@ export default {
     },
     methods: {
         activateTab() {
+            if (!this.initialItem.url) {
+                this.$root.$emit("resize", "all");
+            } else {
+                this.$root.$emit("resize", this.initialItem.id);
+            }
             this.$emit("activate", this.initialItem.id);
         },
     },
