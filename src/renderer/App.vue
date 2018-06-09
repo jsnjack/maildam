@@ -24,6 +24,7 @@ body {
   color: white;
   font-size: 16px;
   height: 100%;
+  font: caption;
 }
 #app {
   height: 100%;
