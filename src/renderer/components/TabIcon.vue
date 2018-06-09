@@ -58,5 +58,6 @@ export default {
     margin: 0.5rem;
     cursor: pointer;
     border: #41464b solid 3px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 </style>
