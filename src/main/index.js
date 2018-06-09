@@ -13,6 +13,12 @@ const winURL = process.env.NODE_ENV === "development"
     ? "http://localhost:9080"
     : `file://${__dirname}/index.html`;
 
+const argv = require("minimist")(process.argv);
+
+if (argv.profile) {
+    app.setPath("userData", `${app.getPath("userData")}-${argv.profile}`);
+}
+
 function createWindow() {
     /**
    * Initial window options
