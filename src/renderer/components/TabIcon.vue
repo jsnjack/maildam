@@ -1,5 +1,5 @@
 <template>
-    <div class="tab-icon" :class="{active: initialItem.isActive}" @click="activateTab">
+    <div class="tab-icon" @click="activateTab">
         {{ getName }}
     </div>
 </template>
@@ -8,9 +8,15 @@
 export default {
     name: "TabIcon",
     props: ["initialItem"],
+    mounted() {
+        this.toggleStyle(this.initialItem.isActive);
+    },
     computed: {
         getName: function() {
             return this.initialItem.name[0];
+        },
+        isActive: function() {
+            return this.initialItem.isActive;
         },
     },
     methods: {
@@ -21,6 +27,18 @@ export default {
                 this.$root.$emit("resize", this.initialItem.id);
             }
             this.$emit("activate", this.initialItem.id);
+        },
+        toggleStyle(val) {
+            if (val) {
+                this.$el.style.border = `${this.initialItem.color} solid 3px`;
+            } else {
+                this.$el.style.border = null;
+            }
+        },
+    },
+    watch: {
+        isActive: function(val) {
+            this.toggleStyle(val);
         },
     },
 };
@@ -40,10 +58,5 @@ export default {
     margin: 0.5rem;
     cursor: pointer;
     border: solid 3px;
-}
-.active {
-    /* border: #599af0 solid 5px; */
-    border: white solid 3px;
-    color: white;
 }
 </style>
