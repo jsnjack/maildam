@@ -46,8 +46,8 @@ export default {
 
 <style scoped>
 .tab-icon {
-    background: rgb(145, 145, 145);
-    color: #24292e;
+    background: #41464b;
+    color: white;
     text-transform: capitalize;
     font-size: 1.5rem;
     text-align: center;
@@ -57,6 +57,6 @@ export default {
     width: 3rem;
     margin: 0.5rem;
     cursor: pointer;
-    border: solid 3px;
+    border: #41464b solid 3px;
 }
 </style>
