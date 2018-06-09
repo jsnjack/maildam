@@ -3,8 +3,8 @@ import Pusher from "pusher-js";
 let {remote} = require("electron");
 let win = remote.getCurrentWindow();
 
-function watchNotifications() {
-    const pusher = new Pusher(window.process.env.PUSHER_API_KEY, {
+function watchNotifications(apiKey) {
+    const pusher = new Pusher(apiKey, {
         cluster: "eu",
         encrypted: true,
     });

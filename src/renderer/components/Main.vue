@@ -22,12 +22,35 @@ import TabIcon from "./TabIcon";
 import getConfig from "../store";
 import watchNewEmail from "../notifications";
 
+const colorPalette = [
+    "#fce94f",
+    "#fcaf3e",
+    "#73d216",
+    "#3465a4",
+    "#ad7fa8",
+    "#cc0000",
+];
+
 export default {
     name: "Main",
     components: {Tab, TabIcon},
     mounted: function() {
-        this.tabs = getConfig();
-        watchNewEmail();
+        let config = getConfig();
+        let tabs = config.tabs;
+        for (let i=0; i<tabs.length; i++) {
+            tabs[i].id = i;
+            tabs[i].color = colorPalette[i];
+        }
+        tabs.push({
+            name: "All",
+            id: tabs.length,
+            isActive: false,
+            color: "white",
+        });
+        this.tabs = tabs;
+        if (config.pusher_api_key) {
+            watchNewEmail(config.pusher_api_key);
+        }
     },
     methods: {
         activate(id) {
