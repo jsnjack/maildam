@@ -25,7 +25,7 @@ export default function getConfigFile() {
             name: "All",
             id: config.length,
             isActive: false,
-            color: colorPalette[config.length],
+            color: "white",
         });
         return config;
     } catch (error) {
