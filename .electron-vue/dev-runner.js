@@ -119,7 +119,7 @@ function startMain() {
 }
 
 function startElectron() {
-    electronProcess = spawn(electron, ["--inspect=5858", ".", "--profile=dev"]);
+    electronProcess = spawn(electron, ["--inspect=5858", ".", "--profile=dev", "--class=maildam-dev"]);
 
     electronProcess.stdout.on("data", data => {
         electronLog(data, "blue");

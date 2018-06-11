@@ -19,6 +19,10 @@ if (argv.profile) {
     app.setPath("userData", `${app.getPath("userData")}-${argv.profile}`);
 }
 
+if (argv.class) {
+    app.setName(argv.class);
+}
+
 function createWindow() {
     /**
    * Initial window options
