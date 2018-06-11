@@ -19,8 +19,8 @@ if (argv.profile) {
     app.setPath("userData", `${app.getPath("userData")}-${argv.profile}`);
 }
 
-if (argv.class) {
-    app.setName(argv.class);
+if (argv.name) {
+    app.setName(argv.name);
 }
 
 function createWindow() {
