@@ -1,6 +1,6 @@
 <template>
   <div class="main-wrapper">
-    <div class="tabs">
+    <div class="tabs" v-show="tabs.length > 2">
       <TabIcon v-for="item in tabs"
         :key="item.id"
         :initialItem="item"
