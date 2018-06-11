@@ -13,8 +13,8 @@ function watchNotifications(apiKey) {
     channel.bind("new", function(data) {
         let audio = new Audio("static/message.oga");
         audio.play();
-        let notification = new Notification(`${data.subject}`, {
-            body: `from ${data.from_name} <${data.from_email}>`,
+        let notification = new Notification(`${data.title}`, {
+            body: `${data.body}`,
             silent: true,
         });
         notification.onclick = function() {
