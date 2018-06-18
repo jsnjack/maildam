@@ -20,7 +20,7 @@
 import Tab from "./Tab";
 import TabIcon from "./TabIcon";
 import getConfig from "../store";
-import watchNewEmail from "../notifications";
+import {watchScaledrone, watchPusher} from "../notifications";
 
 const colorPalette = [
     "#fce94f",
@@ -48,8 +48,13 @@ export default {
             color: "white",
         });
         this.tabs = tabs;
+
+        if (config.scaledrone_channel_id) {
+            watchScaledrone(config.scaledrone_channel_id);
+        }
+
         if (config.pusher_api_key) {
-            watchNewEmail(config.pusher_api_key);
+            watchPusher(config.pusher_api_key);
         }
     },
     methods: {

@@ -24,10 +24,18 @@ maildam loads configuration in JSON format from `~/.config/maildam/config.json` 
             "isActive": false
         }
     ],
-    "pusher_api_key": "x123"
+    "scaledrone_channel_id": "x123",
+    "pusher_api_key": "y123",
 }
 ```
-2. If `pusher_api_key` is provided, maildam subscribes to the channel `mail` and expects a notification to be a valid JSON object with `title` and `body` fields, like:
+2. If `scaledrone_channel_id` is provided, maildam subscribes to the channel and expects a notification to be a valid JSON object with `title` and `body` fields, like:
+```json
+{
+    "title": "New email",
+    "body": "from Yauhen <yauhen@surfly.com>",
+}
+```
+3. If `pusher_api_key` is provided, maildam subscribes to the channel `mail` and expects a notification to be a valid JSON object with `title` and `body` fields, like:
 ```json
 {
     "title": "New email",

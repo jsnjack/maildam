@@ -1,26 +1,39 @@
 import Pusher from "pusher-js";
 
-let {remote} = require("electron");
-let win = remote.getCurrentWindow();
+const Scaledrone = require("scaledrone-node");
 
-function watchNotifications(apiKey) {
+const {remote} = require("electron");
+const win = remote.getCurrentWindow();
+
+export function watchScaledrone(channelID) {
+    const drone = new Scaledrone(channelID);
+    const room = drone.subscribe("mail");
+
+    room.on("data", (data) => {
+        notify(data.title, data.body);
+    });
+}
+
+export function watchPusher(apiKey) {
     const pusher = new Pusher(apiKey, {
         cluster: "eu",
         encrypted: true,
     });
 
-    let channel = pusher.subscribe("mail");
+    const channel = pusher.subscribe("mail");
     channel.bind("new", function(data) {
-        let audio = new Audio("static/message.oga");
-        audio.play();
-        let notification = new Notification(`${data.title}`, {
-            body: `${data.body}`,
-            silent: true,
-        });
-        notification.onclick = function() {
-            win.show();
-        };
+        notify(data.title, data.body);
     });
 }
 
-export default watchNotifications;
+function notify(title, body) {
+    const audio = new Audio("static/message.oga");
+    audio.play();
+    const notification = new Notification(title, {
+        body: body,
+        silent: true,
+    });
+    notification.onclick = function() {
+        win.show();
+    };
+}
