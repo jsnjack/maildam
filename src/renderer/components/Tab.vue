@@ -10,6 +10,7 @@
 
 <script>
 const {shell} = window.require("electron");
+const path = require("path");
 
 export default {
     name: "Tab",
@@ -31,7 +32,8 @@ export default {
             return "persist:" + this.initialItem.name;
         },
         getPreload: function() {
-            return `file:${require("path").resolve(__dirname, "../preload.js")}`;
+            let p = path.join(__static, "preload.js");
+            return `file:${p}`;
         },
         isActive: function( ) {
             return this.initialItem.isActive;

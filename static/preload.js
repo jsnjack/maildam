@@ -1,4 +1,4 @@
-window.ItWorked = true;
+window.spellCheckEnabled = true;
 
 const SpellCheckHandler = require("electron-spellchecker/lib/spell-check-handler").default;
 const ContextMenuListener = require("electron-spellchecker/lib/context-menu-listener").default;
