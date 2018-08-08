@@ -3,8 +3,8 @@
     :src="getSRC"
     :class="{active: initialItem.isActive, invisible: !initialItem.url}"
     :partition="getPartition"
+    :preload="getPreload"
     @new-window="newWindow"
-    @dom-ready="domReady"
     ></webview>
 </template>
 
@@ -30,6 +30,9 @@ export default {
         getPartition: function() {
             return "persist:" + this.initialItem.name;
         },
+        getPreload: function() {
+            return `file:${require("path").resolve(__dirname, "../preload.js")}`;
+        },
         isActive: function( ) {
             return this.initialItem.isActive;
         },
@@ -38,10 +41,6 @@ export default {
         newWindow(ev) {
             // Open URLs in external browser
             shell.openExternal(ev.url);
-        },
-        domReady(ev) {
-            // Add context menu
-            window.require("electron-context-menu")({window: ev.target});
         },
         resize() {
             if (this.initialItem.url) {
